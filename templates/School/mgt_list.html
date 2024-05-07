@@ -16,6 +16,7 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Address</th>
                                     <th scope="col">Designation</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,8 +28,8 @@
                                     <td>{{management.address}}</td>
                                     <td>{{management.designation}}</td>
                                     <td>
-                                       <a href="{% url 'School:mgt_delete' school.pk  %}" class="btn btn-danger md-sm">Delete</a> 
-                                       <a href="{% url 'School:mgt_update' school.pk  %}" class="btn btn-success md-sm">Update</a> 
+                                       <a href="{% url 'School:mgt_delete' management.pk %}" class="btn btn-danger md-sm">Delete</a> 
+                                       <a href="{% url 'School:mgt_update' management.pk %}" class="btn btn-success md-sm">Update</a> 
                                     </td>
                                 </tr>
                                 {% endfor %}

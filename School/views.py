@@ -41,7 +41,7 @@ def school_update(request, school_id):
 
 
 
-def school_delete(request, school_id):
+def school_delete(school_id):
     school = get_object_or_404(School, pk=school_id)
     school.delete()
 
@@ -74,12 +74,25 @@ def mgt_create(request):
     return render(request, 'School/mgt_create.html', {'form': form})
 
 
-def mgt_update(request):
+def mgt_update(request, schoolMgtID):
+    mgt = SchoolManagement.objects.get(pk=schoolMgtID)
+    form = SchoolManagementForm(instance=mgt)
 
-    return render(request, 'School/mgt_update.html')
+    if request.method == 'POST':
+        form = SchoolManagementForm(request.POST, request.FILES, instance=mgt)
+        if form.is_valid():
+            form.save()
+            return redirect('School:mgt_list')
+    context = {
+        'mgt':mgt,
+        'form':SchoolManagementForm
+    }
+    return render(request, 'School/mgt_update.html', context)
 
 
 
-def mgt_delete(request):
-
-    return render(request, 'School/mgt_delete.html')
+def mgt_delete(schoolMgtID):
+    mgt = get_object_or_404(SchoolManagement, pk=schoolMgtID)
+    mgt.delete()
+    
+    return redirect('School:mgt_list')

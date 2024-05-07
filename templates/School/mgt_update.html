@@ -1,0 +1,33 @@
+{% extends "layouts/app.html" %} 
+
+{% load static %}
+{% block managementcreate %}
+<div class="container">
+    <h1>Update Management</h1>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">ID:</label>
+            <input type="number" class="form-control" id="schoolMgtID" name="schoolMgtID" value="{{mgt.schoolMgtID}}" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{mgt.name}}" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label> 
+            <input type="number" class="form-control" id="phone" name="phone" value="{{mgt.phone}}" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label><br>
+            <input type="text" class="form-control" id="address" name="address" value="{{mgt.address}}" required>
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation:</label>
+            <input type="text" class="form-control" id="designation" name="designation" value="{{mgt.designation}}" required>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+    </form>
+</div>
+
+{% endblock %}
