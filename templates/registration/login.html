@@ -1,0 +1,28 @@
+{% extends "layouts/app.html" %}
+{% block content %}
+<div class="row justify-content-center ">
+    <div class="col-sm-6 ">
+        <h2 class="text-muted">Login</h2>
+        <form method="POST" autocomplete="off" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{loginform.username.id_for_label}}">Username:</label>
+                <input type="text" name ="{{ loginform.username.name}}" class="form-control " value="{{ loginform.username.value }}"/>
+                <span class="text-danger ">{{ loginform.username.errors }}</span>
+
+            </div>
+            <div class="form-group">
+                <label for="{{loginform.password.id_for_label}}">Password:</label>
+                <input type="password" name ="{{ loginform.password.name}}" class="form-control " value="{{ loginform.password.value }}"/>
+                <span class="text-danger ">{{ loginform.password.errors }}</span>
+
+            </div>
+
+            <button type="submit" class="btn btn-dark ">Login</button>
+            <a href=" {% url 'register' %} " class="btn btn-default">Create account</a>
+        </form>
+    </div>
+
+</div> 
+
+{% endblock %}

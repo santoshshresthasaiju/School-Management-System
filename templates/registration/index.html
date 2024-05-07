@@ -1,0 +1,11 @@
+{% extends "layouts/app.html" %}
+{% load static %}
+{% block content %}
+
+<h2>School Management System</h2>
+<a class="nav-link" href="{% url 'School:school_create' %}">Add School Details</a>
+<a class="nav-link" href="{% url 'School:school_list' %}">School List</a>
+
+
+  
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "layouts/app.html" %}
+{% block listMgt %}
+
+<div class="container ">
+    <h1>Management Data</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 object-fit-md-contain ">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Designation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for management in mgt %}
+                                <tr>
+                                    <td>{{management.schoolMgtID}}</td>
+                                    <td>{{management.name}}</td>
+                                    <td>{{management.phone}}</td>
+                                    <td>{{management.address}}</td>
+                                    <td>{{management.designation}}</td>
+                                    <td>
+                                       <a href="{% url 'School:mgt_delete' school.pk  %}" class="btn btn-danger md-sm">Delete</a> 
+                                       <a href="{% url 'School:mgt_update' school.pk  %}" class="btn btn-success md-sm">Update</a> 
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{% url 'School:mgt_create' %}">Add Management</a>
+
+</div>
+  
+{% endblock  %}

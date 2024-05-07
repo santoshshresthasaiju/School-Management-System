@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <!-- https://cdnjs.com/libraries/twitter-bootstrap/5.0.0-beta1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/css/bootstrap.min.css"
+    />
+
+    <!-- Icons: https://getbootstrap.com/docs/5.0/extend/icons/ -->
+    <!-- https://cdnjs.com/libraries/font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+
+    <title>School Management</title>
+    {% block links %}
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/index.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'layouts/mains.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'School/tables.css' %}" />
+      
+    {% endblock %}
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info  text-bg-primary   ">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">SMS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Signup</a>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'School:school_create' %}">Add School Details</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'School:mgt_create' %}">Add Management Details</a>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock  %}
+
+    {% block schoolcreate %}
+
+      
+    {% endblock  %} 
+
+    
+    
+    {% block schoolupdate %}
+
+      
+    {% endblock  %}
+
+
+    {% block managementcreate %}
+
+      
+    {% endblock  %}
+
+    {% block listMgt %}
+  
+    {% endblock  %}
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+
+    <!-- https://cdnjs.com/libraries/popper.js/2.5.4 -->
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta1/js/bootstrap.min.js"
+    ></script> -->
+
+    <!-- More: https://getbootstrap.com/docs/5.0/getting-started/introduction/ -->
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<!-- {% extends "layouts/app.html" %} 
+{% load static %} 
+{% block delete %}
+  
+
+<h1>Delete School</h1>
+<p>Are you sure you want to delete '{{ school.school_id }}'?</p>
+<form action="{% url 'School:school_delete' school.pk %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Confirm">
+</form>
+
+
+{% endblock  %} -->

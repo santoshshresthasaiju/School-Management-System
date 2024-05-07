@@ -1,0 +1,39 @@
+{% extends "layouts/app.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 class="text-muted">SignUp</h2>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ registerform.username.id_for_label }}">Username:</label>
+                <input type="text" name="{{ registerform.username.name}}" class="form-control" value="{{ registerform.username.value}}">
+                <span class="text-danger">{{ registerform.username.errors }}</span>
+            </div>
+            <div class="form-group">
+                <label for="{{ registerform.email.id_for_label }}">Email:</label>
+                <input type="email" name="{{ registerform.email.name}}" class="form-control" value="{{ registerform.email.value}}">
+                <span class="text-danger">{{ registerform.email.errors }}</span>
+            </div>
+            <div class="form-group">
+                <label for="{{ registerform.password1.id_for_label }}">Password:</label>
+                <input type="password" name="{{ registerform.password1.name}}" class="form-control" value="{{ registerform.password1.value}}">
+                <span class="text-danger">{{ registerform.password1.errors }}</span>
+            </div>
+            <div class="form-group">
+                <label for="{{ registerform.password2.id_for_label }}">Confirm Password:</label>
+                <input type="password" name="{{ registerform.password2.name}}" class="form-control" value="{{ registerform.password2.value}}">
+                <span class="text-danger">{{ registerform.password2.errors }}</span>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary ">Signup</button>
+
+            
+            <!-- <div>
+                {{form.as_p}}
+            </div>
+            <input type="submit" value="Register"> -->
+    
+        </form>
+
+{% endblock %}

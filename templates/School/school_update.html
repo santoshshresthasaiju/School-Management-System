@@ -1,0 +1,116 @@
+{% extends "layouts/app.html" %} {% load static %} {% block schoolupdate %}
+<style>
+  .centered-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+</style>
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title  align-items-center">Update School Details</h3>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+              <label for="school_id">School ID:</label><br />
+              <input
+                type="text"
+                id="school_id"
+                name="school_id"
+                class="form-control"
+                placeholder="Enter ID"
+                value="{{school.school_id}}"
+              /><br />
+            </div>
+            <div>
+              <label for="school_name">School Name:</label><br />
+              <input
+                type="text"
+                id="school_name"
+                name="school_name"
+                class="form-control"
+                value="{{school.school_name}}"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="school_phone">Phone:</label><br />
+              <input
+                type="tel"
+                id="school_phone"
+                name="school_phone"
+                class="form-control"
+                value="{{school.school_phone}}"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="school_address">Address:</label><br />
+              <input
+                type="text"
+                id="school_address"
+                name="school_address"
+                class="form-control"
+                value="{{school.school_address}}"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="school_contact">Contact:</label><br />
+              <input
+                type="text"
+                id="school_contact"
+                name="school_contact"
+                class="form-control"
+                value="{{school.school_contact}}"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="school_contact_person">Contact Person:</label><br />
+              <input
+                type="text"
+                id="school_contact_person"
+                name="school_contact_person"
+                class="form-control"
+                value="{{school.school_contact_person}}"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="expires_on">Expires On:</label><br />
+              <input
+                type="date"
+                id="expires_on"
+                name="expires_on"
+                class="form-control"
+                value="{{school.expires_on}}"
+                required
+              /><br />
+            </div>
+            <div>
+              <label for="status">Status:</label><br />
+              <input
+                type="text"
+                id="status"
+                name="status"
+                class="form-control"
+                value="{{school.status}}"
+                required
+              /><br /><br />
+            </div>
+            <button class="btn btn-success" type="submit">Update</button>
+            <br />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

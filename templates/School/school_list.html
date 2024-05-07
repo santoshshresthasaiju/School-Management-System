@@ -1,0 +1,59 @@
+{% extends "layouts/app.html" %}
+{% block content %}
+
+<div class="container ">
+    <h1>List of School Data</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 object-fit-md-contain ">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Contact</th>
+                                    <th scope="col">Contact Person</th>
+                                    <th scope="col">Created On</th>
+                                    <th scope="col">Expires On</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for school in schools  %}
+                                <tr>
+                                    <td>{{school.school_id}}</td>
+                                    <td>{{school.school_name}}</td>
+                                    <td>{{school.school_phone}}</td>
+                                    <td>{{school.school_address}}</td>
+                                    <td>{{school.school_contact}}</td>
+                                    <td>{{school.school_contact_person}}</td>
+                                    <td>{{school.created_on}}</td>
+                                    <td>{{school.expires_on}}</td>
+                                    <td>{{school.status}}</td>
+                                    <td>
+                                       <a href="{% url 'School:school_delete' school.pk  %}" class="btn btn-danger md-sm">Delete</a> 
+                                       <a href="{% url 'School:school_update' school.pk  %}" class="btn btn-success md-sm">Update</a> 
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{% url 'School:school_create' %}">Add New School</a>
+
+</div>
+  
+{% endblock  %}
