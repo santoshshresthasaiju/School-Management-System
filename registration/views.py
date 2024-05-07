@@ -2,9 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import auth
 from registration.forms import LoginForm, CreateUserForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate 
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url="login")
 def homepage(request):
     
 
@@ -20,10 +22,11 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth.login(request, user)
+
                 return redirect('home')
     else:
         initial_data = {'username':'', 'password':''}
-        form = CreateUserForm(initial=initial_data)        
+        form = LoginForm(initial=initial_data)
     context = {'loginform':form}
 
     return render(request, 'registration/login.html',context=context)
@@ -43,7 +46,7 @@ def register_view(request):
 
     return render(request, 'registration/register.html', context=context)
     
-
+@login_required(login_url="login")
 def logout_view(request):
     auth.logout(request)
     return redirect('login')

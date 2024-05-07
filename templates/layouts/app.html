@@ -32,7 +32,7 @@
 
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info  text-bg-primary   ">
+    <nav class="navbar navbar-light bg-info  text-bg-primary">
       <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">SMS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +54,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'School:mgt_create' %}">Add Management Details</a>
             </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import School,SchoolManagement
 from .forms import SchoolForm, SchoolManagementForm
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 
 # views for School.
 def school_list(request):
@@ -10,6 +10,7 @@ def school_list(request):
 
     return render(request, 'School/school_list.html', {'schools':schools})
 
+@login_required(login_url="login")
 def school_create(request):
     if request.method == 'POST':
         form = SchoolForm(request.POST)
@@ -49,6 +50,7 @@ def school_delete(request, school_id):
 
 
 #views for Management
+
 def mgt_list(request):
     mgt = SchoolManagement.objects.all()
     return render(request, 'School/mgt_list.html',{'mgt': mgt})
@@ -58,7 +60,7 @@ def mgt_details(request):
 
     return render(request, 'School/mgt_details.html')
 
-
+@login_required(login_url="login")
 def mgt_create(request):
     if request.method == 'POST':
         form = SchoolManagementForm(request.POST)
