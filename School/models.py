@@ -33,5 +33,6 @@ class SchoolManagement(models.Model):
 
 #defining relationship between School and SchoolManagement
 class SchoolManagementSchools(models.Model):
+    schoolmgtschoolID = models.BigIntegerField(primary_key=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     schoolmanagement = models.ForeignKey(SchoolManagement, on_delete=models.CASCADE)

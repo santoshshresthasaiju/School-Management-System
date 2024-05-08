@@ -1,5 +1,5 @@
 from django import forms
-from .models import School, SchoolManagement
+from .models import School, SchoolManagement, SchoolManagementSchools
 
 class SchoolForm(forms.ModelForm):
     class Meta:
@@ -18,9 +18,13 @@ class SchoolManagementForm(forms.ModelForm):
         def __init__(self, *args, **kwargs):
             super(SchoolManagementForm,self).__init__(*args,**kwargs)
 
+class SMSForm(forms.ModelForm):
+    class Meta:
+        model = SchoolManagementSchools
+        fields = '__all__'
 
-
-
+        def __init__(self, *args, **kwargs):
+            super(SMSForm,self).__init__(*args,**kwargs)
 
 
 

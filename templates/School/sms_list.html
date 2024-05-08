@@ -1,0 +1,47 @@
+{% extends "layouts/app.html" %}
+{% block content %}
+
+<div class="container ">
+    <h1>School Management Data</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 object-fit-md-contain ">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">SchoolID</th>
+                                    <th scope="col">ManagementID</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for sms in management_schools  %}
+                                <tr>
+                                    <td>{{sms.schoolmgtschoolID}}</td>
+                                    <td>{{sms.school_id}}</td>
+                                    <td>{{sms.schoolmanagement_id}}</td>
+                                    <td>
+                                       <a href="{% url 'School:sms_delete' sms.pk  %}" class="btn btn-danger md-sm">Delete</a> 
+                                       <a href="{% url 'School:sms_update' sms.pk  %}" class="btn btn-success md-sm">Update</a> 
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{% url 'School:sms_create' %}">Add</a>
+
+</div>
+  
+{% endblock  %}

@@ -1,5 +1,5 @@
 from django.urls import path, include
-from . import views
+from . import views 
 
 app_name = 'School'
 
@@ -19,8 +19,8 @@ urlpatterns = [
     # path for SchoolManagementSchool
     path('sms_list',views.sms_list, name="sms_list"),
     path('sms_create',views.sms_create, name="sms_create"),
-    path('sms_update/<int:schoolMgtID>',views.sms_update, name="sms_update"),
-    path('sms_delete/<int:schoolMgtID>',views.sms_delete, name="sms_delete"), 
+    path('sms_update/<int:schoolmgtschoolID>',views.sms_update, name="sms_update"),
+    path('sms_delete/<int:schoolmgtschoolID>',views.sms_delete, name="sms_delete"), 
 
 
 ]

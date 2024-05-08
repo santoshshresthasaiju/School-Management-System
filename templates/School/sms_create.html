@@ -1,0 +1,52 @@
+{% extends "layouts/app.html" %} {% load static %} {% block smscontent %}
+<div class="container">
+  <div class="row centered-form">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title align-items-center">Create SMS Details</h3>
+        </div>
+        <div class="card-body">
+          <form
+            class="createform"
+            method="POST">
+            {% csrf_token %}
+            <!-- <div>
+              <label for="schoolmgtschoolID">SchoolMgtschool ID:</label>
+              <input
+                class="form-control"
+                type="number"
+                id="schoolmgtschoolID"
+                name="schoolmgtschoolID"
+              />
+            </div>
+            <div>
+              <label for="school">School ID:</label>
+              <input
+                class="form-control"
+                type="number"
+                id="school"
+                name="school"
+              />
+            </div>
+            <div class="form-group">
+              <label for="schoolmanagement">Management ID:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="schoolmanagement"
+                name="schoolmanagement"
+                required
+              />
+            </div> -->
+            {{ form.as_p }}
+            <button class="btn btn-info" type="submit">Create</button>
+          </form>
+          <a href="{% url 'School:sms_list' %}">SMS List</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import School,SchoolManagement
-from .forms import SchoolForm, SchoolManagementForm
+from .models import School,SchoolManagement,SchoolManagementSchools
+from .forms import SchoolForm, SchoolManagementForm, SMSForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -96,3 +96,42 @@ def mgt_delete(schoolMgtID):
     mgt.delete()
     
     return redirect('School:mgt_list')
+
+#School and Management Curd op
+
+def sms_list(request):
+    management_schools = SchoolManagementSchools.objects.all()
+    return render(request, 'School/sms_list.html',{'management_schools':management_schools})
+
+def sms_create(request):
+        
+    if request.method == 'POST':
+        form = SMSForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Management created successfully!')
+            return redirect('School:sms_list')
+    else:
+        form = SMSForm()
+    return render(request, 'School/sms_create.html', {'form': form})
+
+def sms_update(request, schoolmgtschoolID):
+        
+    management_schools = SchoolManagementSchools.objects.get(pk=schoolmgtschoolID)
+    form = SMSForm(instance=management_schools)
+
+    if request.method == 'POST':
+        form = SMSForm(request.POST, request.FILES, instance=management_schools)
+        if form.is_valid():
+            form.save()
+            return redirect('School:sms_list')
+    context = {
+        'management_schools':management_schools,
+        'form':SMSForm
+    }
+    return render(request, 'School/sms_update.html', context)
+
+def sms_delete(request, schoolmgtschoolID):
+    management_schools =get_object_or_404(SchoolManagementSchools,pk=schoolmgtschoolID)
+    management_schools.delete()
+    return redirect('School:sms_list')
