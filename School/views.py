@@ -127,7 +127,7 @@ def sms_update(request, schoolmgtschoolID):
             return redirect('School:sms_list')
     context = {
         'management_schools':management_schools,
-        'form':SMSForm
+        'form':form
     }
     return render(request, 'School/sms_update.html', context)
 
